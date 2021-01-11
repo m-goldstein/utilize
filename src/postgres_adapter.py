@@ -1,3 +1,7 @@
+"""
+This file is a generic postgres database for a scraper.
+We will tweak it to our operation. 
+"""
 import psycopg2
 import os
 #################################################################
@@ -28,9 +32,9 @@ CREATE TABLE %s (
 #################################################################
 class TwitterDBClient():
     HOST       = 'localhost'
-    DB_NAME    = 'twitterdb'
-    TABLE_NAME = 'tweet_data'
-    USER       = 'twitter'
+    DB_NAME    = 'utilizedb'
+    TABLE_NAME = 'utilize_data'
+    USER       = 'utilize'
     PASSWD     = ''
     session    = None
     cursor     = None
