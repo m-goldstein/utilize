@@ -6,6 +6,7 @@ import psycopg2
 import os
 #################################################################
 commands = (
+# This is a generic table entry
 """
 CREATE TABLE %s (
     id VARCHAR(255) PRIMARY KEY,
