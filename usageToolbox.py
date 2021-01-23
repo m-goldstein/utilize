@@ -5,12 +5,14 @@ import datetime as dt
 from datetime import timedelta 
 import numpy as np
 
+
 period = 30
 readingsPerHour = 2
 
 (bill, interval) = fetch.dataframe_from_xml()
 
 lastBillReading = bill.iat[bill.shape[0] - 1,0]+bill.iat[bill.shape[0] - 1,1]
+recentReading = interval.iat[interval.shape[0]-1,0]
 currUsage = interval[interval['Start Time'] + interval['Duration'] > lastBillReading]
 
 x = bill["Wh"].to_numpy().reshape((-1, 1))
@@ -28,7 +30,8 @@ def projectUsage():
     cycleRemaining = period*(1-percentageOfCycle)
    
     return (estimateCost(usage + cycleRemaining * averageWh))
-    
+
+
 
 def estimateCost(amountUsed):
     return cost.predict(amountUsed.to_numpy().reshape(-1,1))/100000
